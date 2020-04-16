@@ -1,0 +1,26 @@
+﻿@model CodeChallenge.Models.Url
+@{
+    ViewBag.Title = "URL Shortener";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>URL Shortener</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.FullUrl, new { placeholder = "Introduza o URL que pretende encolher", @class = "form-control" })
+        @Html.ValidationSummary()
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.CustomSegment, new { placeholder = "Adicionar palavra personalizada ao URL", @class = "form-control" })
+    </div>
+    if (!string.IsNullOrEmpty(Model.ShortUrl))
+    {
+        <div>
+            <a href="@Model.ShortUrl" target="_blank">@Model.ShortUrl</a>
+        </div>
+    }
+
+    <input type="submit" class="btn btn-primary" value="Encolher" />
+}
