@@ -20,7 +20,7 @@ namespace CodeChallenge.Controllers
 
         [HttpGet]
         public ActionResult Index()
-        {
+         {
             Url url = new Url();
             return View(url);
         }
